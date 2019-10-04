@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{COMP6245 : Lab 1 Report}
+\author{Thanakorn Panyapiang(31446612)}
+
+\begin{document}
+
+\maketitle
+\section{Linear Algebra}
+$U(U^{T})$ return a 3x3 identity matrix due to a symetric property( For every \textit{i,j} represent row and column of a matrix, $a_{ij} = a_{ji}$) of the matrix $B$.
+
+Given that $U$ is a matrix where each column is a unit eigenvector of $B$, $U$ and $U^{T}$ can be represented as follow:
+$$
+U = \begin{bmatrix} 
+\vec{v1}_{1} & \vec{v2}_{1} & .. & \vec{vn}_{1}\\
+\vec{v1}_{2} & \vec{v2}_{2} & .. & \vec{vn}_{2}\\
+..	& .. & .. & .. \\
+\vec{v1}_{n} & \vec{v2}_{n} & .. & \vec{vn}_{n}\\
+\end{bmatrix},
+U^{T} = \begin{bmatrix}
+\vec{v1}_{1} & \vec{v1}_{2} & .. & \vec{v1}_{n}\\
+\vec{v2}_{1} & \vec{v2}_{2} & .. & \vec{v2}_{n}\\
+.. & .. & .. & ..\\
+\vec{vn}_{1} & \vec{vn}_{2} & .. & \vec{vn}_{n}\\
+\end{bmatrix}
+$$
+
+Therefore, the multiplication of $U$ and $U^{T}$ is:
+$$
+U(U^{T}) = \begin{bmatrix}
+\vec{v1}\cdot\vec{v1} & \vec{v1}\cdot\vec{v2}\\
+\end{bmatrix}
+$$
+
+\maketitle
+\section{Random Numbers and Univariate Distributions}
+
+\maketitle
+\section{Uncertainty in Estimation}
+
+\maketitle
+\section{Bivariate Gaussian Distribution}
+
+\maketitle
+\section{Sampling for Multivariate Gaussian Distribution}
+
+\maketitle
+\section{Distribution of Projections}
+\end{document}
