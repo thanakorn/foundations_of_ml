@@ -120,4 +120,44 @@ plt.contour(X2p, Y2p, Z2p, 3)
 plt.contour(X3p, Y3p, Z3p, 3)
 plt.grid(True)
 
-#%%
+#%% 5. Sampling from a Multivariate Gaussian Distribution
+C1 = [[2,1], [1,2]]
+C2 = [[2,-1], [-1,2]]
+A1 = np.linalg.cholesky(C1)
+A2 = np.linalg.cholesky(C2)
+
+X = np.random.randn(10000, 2)
+Y1 = X @ A1
+Y2 = X @ A2
+plt.title('Scatter of Isotropic and Correlated Gaussian Densities')
+plt.scatter(Y1[:,0], Y1[:,1], c='m')
+plt.scatter(Y2[:,0], Y2[:,1], c='r')
+plt.scatter(X[:,0], X[:,1], c='c')
+plt.grid(True)
+
+#%% 6. Distribution of Projections
+theta = np.pi/3
+u = [np.sin(theta), np.cos(theta)]
+print('Sum of squares', u[0]**2 + u[1]**2)
+print('Degrees : ', theta*180/np.pi)
+y1_proj = Y1 @ u
+y2_proj = Y2 @ u
+
+num_theta = 360
+y1_proj_var = np.zeros(num_theta)
+y2_proj_var = np.zeros(num_theta)
+theta_range = np.linspace(0, 2 * np.pi, num_theta)
+for i in range(num_theta):
+    theta = theta_range[i]
+    u = [np.sin(theta), np.cos(theta)]
+    y1_proj_var[i] = np.var(Y1 @ u)
+    y2_proj_var[i] = np.var(Y2 @ u)
+plt.title('Variance of projections of Y according to theta')
+plt.grid(True)
+plt.xlabel('Theta')
+plt.ylabel('Variance of Projection')
+plt.plot(y1_proj_var, c='m')
+plt.plot(y2_proj_var, c='c')
+
+y1_e_vals, y1_e_vecs = np.linalg.eig(C1)
+y2_e_vals, y2_e_vecs = np.linalg.eig(C2)
