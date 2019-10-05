@@ -68,4 +68,20 @@ for trial in range(10):
     plt.ylabel('Counts')
     plt.hist(x, num_bins, color='b', alpha=0.8, rwidth=0.8)
 
+#%% Uncertainty in Estimation
+max_trial = 2000
+sample_size_range = np.linspace(100, 500, 40)
+plot_var = np.zeros(len(sample_size_range))
+for sample_size_index in range(len(sample_size_range)):
+    num_samples = np.int(sample_size_range[sample_size_index])
+    trail_vars = np.zeros(max_trial)
+    for trial in range(max_trial):
+        samples = np.random.randn(num_samples, 1)
+        trail_vars[trial] = np.var(samples)
+    plot_var[sample_size_index] = np.var(trail_vars)
+plt.title('Variance in Estimating Variance')
+plt.xlabel('#Samples')
+plt.ylabel('Variance')
+plt.plot(sample_size_range, plot_var)
+
 #%%
