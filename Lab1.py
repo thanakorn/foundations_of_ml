@@ -39,10 +39,33 @@ print(f'inv(B) : {inv_B}')
 print(f'B x B(-1) : {B @ inv_B}')
 print(f'Is B x B(-1) an identity matrix : {np.allclose(B @ inv_B, np.eye(B.shape[0]))}')
 
-E_VALS, E_VECS = np.linalg.eig(B)
-print(f'Eigenvalues of B : {E_VALS}')
-print(f'Eigenvectors of B : {E_VECS}')
-print(f'Eigenvector[1] . Eigenvector[2] : {np.fix(np.dot(E_VECS[:,0], E_VECS[:,1]))}')
-print(f'Eigenvector[1] . Eigenvector[3] : {np.fix(np.dot(E_VECS[:,0], E_VECS[:,2]))}')
-print(f'Eigenvector[2] . Eigenvector[3] : {np.fix(np.dot(E_VECS[:,1], E_VECS[:,2]))}')
-print(f'E_VECS @ E_VECS.T : {E_VECS @ E_VECS.T}')
+eigvals, eigvecs = np.linalg.eig(B)
+eigvecs_t = eigvecs.T
+print(f'Eigenvalues of B : {eigvals}')
+print(f'Eigenvectors of B : {eigvecs}')
+
+#%% Random Numbers and Univariate Distribution
+num_samples = 1000
+num_bins = 20
+bin_counts_var = np.array([], dtype = float)
+
+for trial in range(10):
+    x = np.random.rand(num_samples, 1)
+    plt.figure(figsize=(3, 3,))
+    plt.title(label = f'Trial #{trial}')
+    plt.xlabel('Bin')
+    plt.ylabel('Counts')
+    counts, bins, patches = plt.hist(x, bins = num_bins)
+    var = np.var(counts/num_samples)
+    bin_counts_var = np.append(bin_counts_var, np.var(counts/num_samples))
+
+for trial in range(10):
+    x = np.zeros(num_samples)
+    for i in range(num_samples): x[i] = sum(np.random.rand(10, 1)) + sum(np.random.rand(10, 1))
+    plt.figure(figsize=(3, 3,))
+    plt.title(label = f'Trial #{trial}')
+    plt.xlabel('Bin')
+    plt.ylabel('Counts')
+    plt.hist(x, num_bins, color='b', alpha=0.8, rwidth=0.8)
+
+#%%
