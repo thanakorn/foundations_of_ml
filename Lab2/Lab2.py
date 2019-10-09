@@ -32,5 +32,3 @@ labels = np.concatenate((label_positive, label_negative))
 sample_indices = np.random.permutation(num_data_per_class * 2)
 train_samples = samples[sample_indices, :]
 train_labels = labels[sample_indices]
-
-#%%

@@ -43,30 +43,38 @@ eigvals, eigvecs = np.linalg.eig(B)
 eigvecs_t = eigvecs.T
 print(f'Eigenvalues of B : {eigvals}')
 print(f'Eigenvectors of B : {eigvecs}')
+print(f'Eigvecs x Eigvecs.T : {eigvecs @ eigvecs.T}')
 
 #%% 2. Random Numbers and Univariate Distribution
-num_samples = 1000
-num_bins = 20
+num_samples = 5000
+num_bins = 30
 bin_counts_var = np.array([], dtype = float)
 
-for trial in range(10):
-    x = np.random.rand(num_samples, 1)
-    plt.figure(figsize=(3, 3,))
-    plt.title(label = f'Trial #{trial}')
-    plt.xlabel('Bin')
-    plt.ylabel('Counts')
-    counts, bins, patches = plt.hist(x, bins = num_bins)
-    var = np.var(counts/num_samples)
-    bin_counts_var = np.append(bin_counts_var, np.var(counts/num_samples))
-
-for trial in range(10):
-    x = np.zeros(num_samples)
-    for i in range(num_samples): x[i] = sum(np.random.rand(10, 1)) + sum(np.random.rand(10, 1))
-    plt.figure(figsize=(3, 3,))
-    plt.title(label = f'Trial #{trial}')
-    plt.xlabel('Bin')
-    plt.ylabel('Counts')
-    plt.hist(x, num_bins, color='b', alpha=0.8, rwidth=0.8)
+# for trial in range(1):
+#     x = np.random.rand(num_samples, 1)
+#     plt.figure(figsize=(4, 4,))
+#     #plt.title(label = f'Trial #{trial}')
+#     plt.xlabel('Bin')
+#     plt.ylabel('Counts')
+#     counts, bins, patches = plt.hist(x, bins = num_bins)
+#     plt.savefig('random_numbers')
+#     var = np.var(counts/num_samples)
+#     bin_counts_var = np.append(bin_counts_var, np.var(counts/num_samples))
+fig, subfig = plt.subplots(1, 5, figsize = (18,3))
+num_random = [2, 10, 50, 100, 1000]
+sum_var = np.zeros(5)
+for k in range(len(num_random)):
+    for trial in range(1):
+        x = np.zeros(num_samples)
+        for i in range(num_samples): x[i] = sum(np.random.rand(num_random[k], 1))
+        #plt.figure(figsize=(2, 2,))
+        #plt.xlabel('Bin')
+        #plt.ylabel('Counts')
+        subfig[k].hist(x, num_bins, alpha=0.8, rwidth=0.8)
+        sum_var[k] = np.var(x)
+        plt.savefig('sum_random_numbers')
+plt.figure(figsize=(3,3))
+plt.plot(num_random, sum_var)
 
 #%% 3. Uncertainty in Estimation
 max_trial = 2000
@@ -130,9 +138,9 @@ X = np.random.randn(10000, 2)
 Y1 = X @ A1
 Y2 = X @ A2
 plt.title('Scatter of Isotropic and Correlated Gaussian Densities')
-plt.scatter(Y1[:,0], Y1[:,1], c='m')
-plt.scatter(Y2[:,0], Y2[:,1], c='r')
-plt.scatter(X[:,0], X[:,1], c='c')
+plt.scatter(Y1[:,0], Y1[:,1], c='m', s=100, edgecolors='')
+# plt.scatter(Y2[:,0], Y2[:,1], c='r')
+plt.scatter(X[:,0], X[:,1], c='c', s=100, edgecolors='')
 plt.grid(True)
 
 #%% 6. Distribution of Projections
