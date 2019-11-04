@@ -5,6 +5,7 @@ import pandas as pd
 from sklearn import model_selection, datasets, linear_model
 from sklearn.linear_model import LinearRegression, Lasso
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
 %matplotlib inline
 plt.rcParams.update(plt.rcParamsDefault)
 #%% Linear Least Squares Regression
@@ -28,29 +29,35 @@ pseudo_inv_predict = data @ pseudo_inv_weights
 
 # Using sklearn
 linear_regression = LinearRegression()
-linear_regression.fit(raw_data, target)
-sk_learn_predict = linear_regression.predict(raw_data)
+linear_regression.fit(data, target)
+sk_learn_predict = linear_regression.predict(data)
 
 # Comparing accuracy
 fig, ax = plt.subplots(nrows = 1, ncols = 2, figsize = (12,4))
 ax[0].scatter(target, pseudo_inv_predict)
 ax[0].set_title('Pseudo-inverse method')
+ax[0].set_ylabel('Predict')
+ax[0].text(0.75, 0.1, f'Mean Sqr Error = %.2f' % mean_squared_error(pseudo_inv_predict, target), weight = 'bold', horizontalalignment='center',verticalalignment='center', transform=ax[0].transAxes)
+ax[0].set_xlabel('Actual')
 ax[1].scatter(target, sk_learn_predict, c = 'r')
-ax[1].set_title('Scikit-learn method')
-# plt.savefig('Lab4/diabetes_pseudo_inv_accuracy.png')
+ax[1].set_title('Scikit-learn')
+ax[1].set_ylabel('Predict')
+ax[1].set_xlabel('Actual')
+ax[1].text(0.75, 0.1, f'Mean Sqr Error = %.2f' % mean_squared_error(sk_learn_predict, target), weight = 'bold', horizontalalignment='center',verticalalignment='center', transform=ax[1].transAxes)
+# plt.savefig('Lab4/diabetes_accuracy.png', bbox = 'tight')
 
 #%% Regularization
 # Tikhanov Regularization
 gamma = 0.5
 reg_pseudo_inv_weights = np.linalg.inv((data.T @ data + gamma * np.eye(num_features + 1))) @ data.T @ target
-
+ 
 # Lasso Regularization
 lasso = Lasso(alpha = 0.2)
 lasso.fit(raw_data, target)
 lasso_predict = lasso.predict(raw_data)
 
 # Visualize the weights
-fig, ax = plt.subplots(nrows = 1, ncols = 3, figsize = (18, 4))
+fig, ax = plt.subplots(nrows = 1, ncols = 2, figsize = (12, 4))
 ax[0].bar(range(0,num_features + 1), pseudo_inv_weights)
 ax[0].set_title('Pseudo-inverse solution')
 ax[0].set_ylim(np.min(pseudo_inv_weights), np.max(pseudo_inv_weights))
@@ -59,11 +66,11 @@ ax[1].bar(range(0,num_features + 1), reg_pseudo_inv_weights)
 ax[1].set_title('Regularized pseudo-inverse solution')
 ax[1].set_ylim(np.min(pseudo_inv_weights), np.max(pseudo_inv_weights))
 ax[1].set_xlim(0, num_features + 1)
-ax[2].bar(range(0,len(lasso.coef_)), lasso.coef_)
-ax[2].set_title('Lasso solution')
-ax[2].set_ylim(np.min(pseudo_inv_weights), np.max(pseudo_inv_weights))
-ax[2].set_xlim(0, num_features + 1)
-# plt.savefig('Lab4/reg_weights.png')
+# ax[2].bar(range(0,len(lasso.coef_)), lasso.coef_)
+# ax[2].set_title('Lasso solution')
+# ax[2].set_ylim(np.min(pseudo_inv_weights), np.max(pseudo_inv_weights))
+# ax[2].set_xlim(0, num_features + 1)
+# plt.savefig('Lab4/reg_weights_compare.png')
 
 # Visualize Regularization Path
 _, _, coefs = linear_model.lars_path(raw_data, target, method = 'lasso', verbose = True)
