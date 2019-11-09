@@ -1,0 +1,51 @@
+1,7-propyltheophylline,0.017,-1.079,1.096,25
+2,aminopyrine,-0.360,-0.251,-0.109,20
+3,4-methylpteridine,-0.466,-0.721,0.255,19
+4,1-ethyltheobromine,-0.719,-0.865,0.146,25
+5,6-methoxypteridine,-1.139,-1.124,-0.015,19
+6,acetylsalicylic-acid,-1.600,-2.099,0.499,20
+7,5-i-propyl-5-allylbarbiturate,-1.708,-1.887,0.179,18
+8,55-dimethylbarbiturate,-1.742,-1.919,0.177,22
+9,7-butyltheophylline,-1.805,-1.327,-0.478,25
+10,cycloethane-1’5-spirobarbiturate,-1.886,-2.144,0.258,22
+11,2-hydroxypteridine,-1.947,-1.707,-0.240,19
+12,4-aminopteridine,-2.313,-2.640,0.327,19
+13,phenobarbital,-2.322,-2.965,0.643,18
+14,prostaglandin E2,-2.470,-2.061,-0.409,12
+15,xanthine,-2.483,-2.491,0.008,25
+16,theobromine,-2.523,-1.664,-0.859,25
+17,5-i-propyl-5-(3-methylbut-2-enyl)barbiturate,-2.593,-2.294,-0.299,22
+18,pteridine-2-thiol,-2.629,-1.964,-0.665,19
+19,reposal,-2.696,-2.697,0.001,18
+20,55-di-i-propylbarbiturate,-2.766,-2.210,-0.556,18
+21,quinidine,-2.812,-4.102,1.290,20
+22,RTI11,-2.860,-3.094,0.234,21
+23,RTI9,-3.043,-4.056,1.013,21
+24,cyclopentane-1’ 5-spirobarbiturate,-3.060,-2.762,-0.298,22
+25,prednisolone,-3.180,-3.175,-0.005,12
+26,corticosterone,-3.240,-3.665,0.425,12
+27,cortisone,-3.270,-3.795,0.525,12
+28,5-t-butyl-5-(3-methylbut-2-enyl)barbiturate,-3.551,-3.039,-0.512,22
+29,dexamethasone,-3.590,-3.788,0.198,12
+30,lorazepam,-3.604,-4.274,0.670,20
+31,diazepam,-3.754,-4.280,0.526,20
+32,fenclofenac,-3.854,-3.990,0.136,23
+33,5-ethyl-5-octylbarbiturate,-3.943,-3.926,-0.017,18
+34,phenytoin,-3.990,-3.340,-0.650,20
+35,prasterone,-4.064,-3.374,-0.690,14
+36,imipramine,-4.187,-4.560,0.373,13
+37,promethazine,-4.260,-3.613,-0.647,13
+38,RTI5,-4.272,-4.835,0.563,21
+39,triamcinolone acetonide,-4.310,-4.359,0.049,12
+40,hydrocortisone acetate,-4.340,-4.172,-0.168,12
+41,trifluoperazine,-4.523,-4.954,0.431,13
+42,noretindrone,-4.630,-4.295,-0.335,16
+43,RTI4,-4.706,-3.453,-1.253,21
+44,estradiol,-4.845,-4.734,-0.111,15
+45,sulindac,-5.000,-4.461,-0.539,23
+46,chlorpromazine,-5.097,-4.856,-0.241,13
+47,testosterone acetate,-5.184,-4.674,-0.510,14
+48,equilin,-5.282,-4.681,-0.601,15
+49,methyltestosterone acetate,-5.284,-4.837,-0.447,14
+50,danazol,-5.507,-4.699,-0.808,24
+51,estrone,-5.530,-5.009,-0.521,15
