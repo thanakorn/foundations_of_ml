@@ -29,15 +29,27 @@ To improve the model, the following changes have been added:
 \includegraphics[scale=0.4]{rbf_improved}
 \captionof{figure}{}
 
-To compare RBF with Linear Regression(with L2 regularization), the data has been splitted into 10 parts to run ten-fold cross validation. The sample distributions of predicted values of both models are shown in the figure below. One thing which can be noticed is that RBF model generaly has a wider range of predicted values.
+To compare RBF with Linear Regression(with L2 regularization), the data has been splitted into 10 parts to run ten-fold cross validation. The sample distributions of predicted values of both models are shown in the Figure 3. and the distribution of errors are displayed in Figure 4. The boxplot in the Figure 4. indicates that the errors on RBF model is higher than the linear regression model in average but the range of error is lower.
 
 \begin{center}
 \begin{tabular}{cccc}
-\includegraphics[scale=0.3]{result_dist_1} &
-\includegraphics[scale=0.3]{result_dist_2} &
-\includegraphics[scale=0.3]{result_dist_3} &
-\includegraphics[scale=0.3]{result_dist_4}
+\includegraphics[scale=0.4]{result_dist_1} &
+\includegraphics[scale=0.4]{result_dist_2} &
+\includegraphics[scale=0.4]{result_dist_3} &
+\includegraphics[scale=0.4]{result_dist_4}
 \end{tabular}
+\captionof{figure}{}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.4]{error_compare}
+\captionof{figure}{}
+\end{center}
+
+Using sklearn Support Vector Regressor with RBF kernel gives the model which performs as follow on the similar training set and test set as Figure 2. where the model is trained on 70 percent of the whole dataset.\textit{(Note: suspect there is additional parameters needed to be adjusted as the predicted values seems to have incorrect scale)}
+
+\begin{center}
+\includegraphics[scale=0.4]{sklearn_compare}
 \captionof{figure}{}
 \end{center}
 
