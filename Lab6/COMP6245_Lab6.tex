@@ -42,7 +42,7 @@ However, when running both versions of K-Means algorithm on the imbalance datase
 This section of the report will analyze the impact of two parameters of K-Means algorithm : \textit{K} and \textit{the initial centroids}.
 
 \subsection{Choice of K}
-The result of running K-Means clustering(self-implemented version) on the dataset in Figure 1. with various choices of K is shown in the figure below. What can be observed from the result is that as the value of K increases the size of cluster and the inter-cluster distance become smaller. However, too high value of K could also makes the cluster lack of generalization. For instance, on K = 7, the algorithm divides one density on the top into two groups and two densities below into four clusters.
+The result of running K-Means clustering(self-implemented version) on the dataset in Figure 1. with various choices of K is shown in the figure below. What can be observed from the result is that as the value of K increases the size of cluster and the inter-cluster distance become smaller. However, too high value of K could also make the cluster too specific. For instance, on K = 7, the algorithm divides one density on the top into two groups and two densities below into four clusters.
 \begin{center}
 \includegraphics[scale=0.4]{multiple_k}
 \captionof{figure}{Clustering results for different values of K}
@@ -56,7 +56,7 @@ To choose a proper K, one of the well-known techniques is to use the \textit{Elb
 
 \subsection{Initial Centroids}
 
-Initial centroids are another factor which has a huge impact on K-Means. The poor selection of centroids could leads to the algorithm returns incorrect results as illustrated in the figure below. In Figure 7a and 7b, there is one initial centroid which is the furthest and the closest to all datapoints respectively.\\
+Initial centroids are another factor that has a huge impact on K-Means. The poor selection of centroids could lead to the algorithm returns incorrect results as illustrated in the figure below. In Figure 7a and 7b, there is one initial centroid which is the furthest and the nearest to all data points respectively.\\
 
 \begin{center}
 \begin{tabular}{c c}
@@ -67,9 +67,9 @@ Initial centroids are another factor which has a huge impact on K-Means. The poo
 \captionof{figure}{}
 \end{center}
 
-The cause of this issue is the Expectation-Maximizatioin algorithm, which is the key of K-Means, stucks at the local minimum. In Figure 7a, no data is assigned to the top centroid in the first iteration. Therefore, when K-Means re-average the centroid to minimize the total inter-cluster distance and maximize the likelihood, the top centroid does not move and the algorithm ends up with one empty cluster even though the K is correct. The similar situation also occurs on the Figure 7b where all samples are assigned to the bottom centroid.
+The cause of this issue is the Expectation-Maximization algorithm, which is the key of K-Means, stucks at the local minimum. In Figure 7a, no data is assigned to the top centroid in the first iteration. Therefore, when K-Means re-average the centroid to minimize the total inter-cluster distance and maximize the likelihood, the top centroid does not move and the algorithm ends up with one empty cluster even the value of K is correct. A similar situation also occurs in Figure 7b where all samples are assigned to the bottom centroid.
 
-One of the popular techniques for choosing initial centroids is to uniformly pick K points in the dataset as an initial centroid. Although this could reduce the chance, this method does not guarantee that the algorithm will not stuck at the suboptimal solution. The more sophisticated approach for this is \textit{k-means++}\cite{kmpp} which is based on the same princleple but using weighted probability distribution instead of uniform sampling.
+One of the popular techniques for choosing initial centroids is to randomly pick K instances in the dataset as an initial centroid. Although this could reduce the chance, this method does not guarantee that the algorithm will not stuck at the suboptimal solution. The more sophisticated approach for this is \textit{k-means++}\cite{kmpp} which is based on the same principle but using weighted probability distribution instead of uniform sampling.
 
 \section{Testing with the UCI dataset}
 In this section, we will verify our K-Means implementation on the Iris dataset from UCI repository. The dataset contains 3 classes where each sample has 4 features and distributes as follow.
@@ -98,10 +98,3 @@ Proceedings of the eighteenth annual ACM-SIAM symposium on Discrete algorithms. 
 \end{thebibliography}
 
 \end{document}
-
-@article{kmpp,
-author = {},
-title = {k-means++: The Advantages of Careful Seeding},
-journaltitle = {Proceedings of the eighteenth annual ACM-SIAM symposium on Discrete algorithms. Society for Industrial and Applied Mathematics Philadelphia},
-year = {2007},
-}
