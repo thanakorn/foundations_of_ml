@@ -67,7 +67,7 @@ Initial centroids are another factor that has a huge impact on K-Means. The poor
 \captionof{figure}{}
 \end{center}
 
-The cause of this issue is the Expectation-Maximization algorithm, which is the key of K-Means, stucks at the local minimum. In Figure 7a, no data is assigned to the top centroid in the first iteration. Therefore, when K-Means re-average the centroid to minimize the total inter-cluster distance and maximize the likelihood, the top centroid does not move and the algorithm ends up with one empty cluster even the value of K is correct. A similar situation also occurs in Figure 7b where all samples are assigned to the bottom centroid.
+The cause of this issue is the Expectation-Maximization algorithm, which is the key of K-Means, stucks at the local minimum. In Figure 7a, no data is assigned to the top centroid in the first iteration. Therefore, when K-Means re-average the centroid to minimize the total distance-to-centroid and maximize the likelihood, the top centroid does not move and the algorithm ends up with one empty cluster even the value of K is correct. A similar situation also occurs in Figure 7b where all samples are assigned to the bottom centroid.
 
 One of the popular techniques for choosing initial centroids is to randomly pick K instances in the dataset as an initial centroid. Although this could reduce the chance, this method does not guarantee that the algorithm will not stuck at the suboptimal solution. The more sophisticated approach for this is \textit{k-means++}\cite{kmpp} which is based on the same principle but using weighted probability distribution instead of uniform sampling.
 
